@@ -1,8 +1,13 @@
+import { HStack, Image, Text } from '@chakra-ui/react'
+import logo from '../assets/logo.webp'
 import React from 'react'
 
 function NavBar() {
   return (
-    <div>NavBar</div>
+    <HStack>
+        <Image src={logo} boxSize='60px'/>
+        <Text>NavBar</Text>
+    </HStack>
   )
 }
 
