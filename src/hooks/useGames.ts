@@ -2,9 +2,10 @@ import { useState, useEffect } from "react"
 import apeClient from '../services/ape-client'
 import { CanceledError } from "axios";
 
-interface Game {
+ export interface Game {
     id: number,
-    name: string
+    name: string,
+    background_image: string;
 }
 
 
