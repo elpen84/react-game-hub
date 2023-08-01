@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import apeClient from '../services/ape-client'
-
-interface Game {
-    id: number,
-    name: string
-}
+import useGames from '../hooks/useGames';
 
 
-interface FetchGamesResponse {
-    count: number;
-    results: Game[]
-}
 
-function GameGrid() {
-    const [games, setGames] =useState<Game[]>([])
-    const [error, setError] =useState('')
+const GameGrid = () => {
 
-    useEffect(() => {
-        apeClient.get<FetchGamesResponse>('/games')
-        .then(res => setGames(res.data.results))
-        .catch(err => setError(err.message))
-    })
+    const {games, error} = useGames();
+   
 
   return (
+<>
+{/* {error && <Text>{error}</Text>} */}
+
     <ul>
         {games.map(game=> <li key={game.id}>{game.name}</li>)}
     </ul>
+</>   
   )
 }
 
