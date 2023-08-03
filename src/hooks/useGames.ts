@@ -2,10 +2,20 @@ import { useState, useEffect } from "react"
 import apeClient from '../services/ape-client'
 import { CanceledError } from "axios";
 
- export interface Game {
+
+ 
+export interface Platform {
+    id: string,
+    name: string,
+    slug: string
+
+}
+
+export interface Game {
     id: number,
     name: string,
     background_image: string;
+    parent_platforms: { platform: Platform}[]
 }
 
 
