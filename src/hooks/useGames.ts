@@ -27,15 +27,18 @@ interface FetchGamesResponse {
 
 const useGames = () => {
 
-    const controller = new AbortController();
+    
 
     const [games, setGames] =useState<Game[]>([])
     const [error, setError] =useState('')
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(false);
 
 
-setLoading(true);
+
     useEffect(() => {
+        const controller = new AbortController();
+        setLoading(true);
+
         apeClient.get<FetchGamesResponse>('/games', {signal: controller.signal})
         .then(res => {
             setGames(res.data.results);
@@ -43,8 +46,10 @@ setLoading(true);
         })
         .catch(err =>  {
             if (err instanceof CanceledError) return;
-            setError(err.message)})
+            setError(err.message)
             setLoading(false);
+        })
+            
 
         return () => controller.abort();
     },[])
