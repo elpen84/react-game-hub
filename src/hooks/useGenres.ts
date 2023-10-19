@@ -3,9 +3,10 @@ import apeClient from "../services/ape-client"
 import { CanceledError } from "axios";
 
 
-interface Genre {
+export interface Genre {
     id: number,
-    name: string
+    name: string,
+    image_background: string;
 }
 
 interface FetchGenreResponse {
