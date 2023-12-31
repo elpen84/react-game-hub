@@ -7,10 +7,10 @@ import useData from '../hooks/useData';
 
 
 interface Props {
-  onSelectedGenre: (genre: Genre) =>  void;
+  onSelectGenre: (genre: Genre) =>  void;
 }
 
-const GenreList = ({onSelectedGenre}: Props) => {
+const GenreList = ({onSelectGenre}: Props) => {
     const { data} = useData<Genre>('/genres')
     
   return (
@@ -24,7 +24,7 @@ const GenreList = ({onSelectedGenre}: Props) => {
     src={getCroppedImageUrl(genre.image_background)}
     />
      <Button 
-     onClick={()=>onSelectedGenre(genre)} 
+     onClick={()=>onSelectGenre(genre)} 
      fontSize={'lg'} 
      variant='link'>
       {genre.name}
